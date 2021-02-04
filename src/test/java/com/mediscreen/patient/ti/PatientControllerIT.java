@@ -12,7 +12,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -65,7 +64,6 @@ public class PatientControllerIT {
 
     /*---------------------------------------- GET Find All -------------------------------*/
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void listPatients_existingPatients_patientListIsDone() throws Exception {
         //Given
@@ -77,7 +75,6 @@ public class PatientControllerIT {
     }
     /*---------------------------------------- GET Patient By Id -------------------------------*/
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void getPatientById_existingPatientId_patientIsDone() throws Exception {
         //Given
@@ -88,7 +85,6 @@ public class PatientControllerIT {
                 .andExpect(status().isOk());
     }
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void getPatientById_inexistingPatientId_errorIsReturn() throws Exception {
         //Given
@@ -100,7 +96,6 @@ public class PatientControllerIT {
     }
     /*---------------------------------------- POST Add Patient -------------------------------*/
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void addPatient_inExistingPatient_patientIsCreate() throws Exception {
         //Given
@@ -126,7 +121,6 @@ public class PatientControllerIT {
     }
 
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void addPatient_ExistingPatient_errorIsReturn() throws Exception {
         //Given
@@ -150,7 +144,6 @@ public class PatientControllerIT {
 
     /*---------------------------------------- PUT update Patient -------------------------------*/
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void updatePatient_existingIdPatient_patientIsUpdate() throws Exception {
         //Given
@@ -173,7 +166,6 @@ public class PatientControllerIT {
                 .andExpect(status().isAccepted());
     }
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void updatePatient_inexistingIdPatient_errorIsReturn() throws Exception {
         //Given
@@ -197,7 +189,6 @@ public class PatientControllerIT {
     }
     /*---------------------------------------- DEL delete Patient -------------------------------*/
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void deletePatient_existingIdAndCorrectPatientGiven_patientDeleted() throws Exception {
         //Given
@@ -220,7 +211,6 @@ public class PatientControllerIT {
                 .andExpect(status().isOk());
     }
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void deletePatient_existingIdAndInorrectPatientGiven_patientDeleted() throws Exception {
         //Given
@@ -243,7 +233,6 @@ public class PatientControllerIT {
                 .andExpect(status().isNotAcceptable());
     }
     @Test
-    @WithMockUser(roles = "USER")
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void deletePatient_inexistingIdAndCorrectPatientGiven_patientDeleted() throws Exception {
         //Given

@@ -17,7 +17,7 @@ public class PatientApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PatientApplication.class, args);
 	}
-	@Bean
+/*	@Bean
 	public FilterRegistrationBean corsFilter() {
 		UrlBasedCorsConfigurationSource source =
 				new UrlBasedCorsConfigurationSource();
@@ -29,13 +29,6 @@ public class PatientApplication {
 		config.addAllowedOrigin("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
-/*        config.addAllowedMethod("OPTIONS");
-        config.addAllowedMethod("HEAD");
-        config.addAllowedMethod("GET");
-        config.addAllowedMethod("PUT");
-        config.addAllowedMethod("POST");
-        config.addAllowedMethod("DELETE");
-        config.addAllowedMethod("PATCH");*/
 
 		source.registerCorsConfiguration("/**", config);
 
@@ -46,4 +39,6 @@ public class PatientApplication {
 
 		return bean;
 	}
+
+ */
 }

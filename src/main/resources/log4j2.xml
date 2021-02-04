@@ -6,8 +6,8 @@
         </Console>
         <RollingFile
                 name="LogToFile"
-                fileName="log/mediscreen_patient.log"
-                filePattern="log/mediscreen_patient%d{yyyy-MM-dd}-%i.log"
+                fileName="log/mediscreen_patientv2.log"
+                filePattern="log/mediscreen_patientv2%d{yyyy-MM-dd}-%i.log"
                 ignoreExceptions="false">
             <PatternLayout>
                 <Pattern>%d %p %c{1.}-%M [%t] %m%n</Pattern>
@@ -19,7 +19,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.mediscreen.patient" level="debug" additivity="false">
+        <Logger name="com.mediscreen.patientv2" level="debug" additivity="false">
             <AppenderRef ref="LogToConsole"/>
             <AppenderRef ref="LogToFile"/>
         </Logger>
