@@ -19,8 +19,6 @@ execute command line to start all components: docker-compose up -d
 
 ### divers
 * paramétrage du proxy pour node js
-npm config set proxy http://user:pwd@prafapxymwgvipadm.siege.axa-fr.intraxa:8080
-
 
 ### lancement de zipkin 
 * depuis le répertoire de zipkin : java -jar zipkin-server-2.6.1-exec.jar
