@@ -19,28 +19,4 @@ public class PatientApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PatientApplication.class, args);
 	}
-/*	@Bean
-	public FilterRegistrationBean corsFilter() {
-		UrlBasedCorsConfigurationSource source =
-				new UrlBasedCorsConfigurationSource();
-
-		CorsConfiguration config = new CorsConfiguration();
-
-		config.setAllowCredentials(true);
-
-		config.addAllowedOrigin("*");
-		config.addAllowedHeader("*");
-		config.addAllowedMethod("*");
-
-		source.registerCorsConfiguration("/**", config);
-
-		FilterRegistrationBean<CorsFilter> bean =
-				new FilterRegistrationBean<>(new CorsFilter(source));
-
-		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-
-		return bean;
-	}
-
- */
 }
