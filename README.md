@@ -13,7 +13,7 @@ docker build --build-arg JAR_FILE=target/*.jar -t p9-patient .
 
 ### Docker execution :
 
-docker run -p 9102:9102 --name Patient p9-patient
+docker run -p 8084:8084 --name Patient p9-patient
 
 execute command line to start all components: docker-compose up -d
 
