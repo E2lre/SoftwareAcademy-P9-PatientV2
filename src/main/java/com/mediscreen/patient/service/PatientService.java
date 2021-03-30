@@ -17,6 +17,14 @@ public interface PatientService {
      * @return patient
      */
     public Patient findById(long id);
+
+    /**
+     * get patient list by familyName
+     * @param familyName Family Name for te search
+     * @return list of patient
+     */
+    public List<Patient> findByFamilyName(String familyName);
+
     /**
      * create a patient
      * @param patient patient to be create

@@ -94,6 +94,29 @@ public class PatientControllerIT {
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
+
+    /*---------------------------------------- GET Patient By familyName -------------------------------*/
+    @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    public void getPatientByFamilyName_existingFamilyNamePatient_patientListIsDone() throws Exception {
+        //Given
+
+        //WHEN THEN
+        mockMvc.perform(get("/patientFamilyName/"+existingFirstnameConst))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+    @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    public void getPatientByFamilyName_inexistingFamilyNamePatient_errorIsReturn() throws Exception {
+        //Given
+
+        //WHEN THEN
+        mockMvc.perform(get("/patientFamilyName/"+"AgentK"))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
     /*---------------------------------------- POST Add Patient -------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)

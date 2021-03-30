@@ -33,6 +33,14 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public List<Patient> findByFamilyName(String familyName) {
+        logger.info("Start/finish");
+        List<Patient> patientListResult = patientDao.findByLastName(familyName);
+        return patientListResult;
+        // return null;
+    }
+
+    @Override
     public boolean addPatient(Patient patient) {
         logger.info("Start");
         boolean result = false;

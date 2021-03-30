@@ -48,14 +48,29 @@ public class PatientController {
     @ResponseStatus(HttpStatus.OK)
     public Patient getPatientById(@PathVariable long id) throws PatientNotFoundException {
 
-        logger.info("listPatients start-"+id);
+        logger.info("getPatientById start-"+id);
         Patient resulPatient = patientService.findById(id);
         if (resulPatient==null){
             logger.warn("The patient " + id + " does not exist");
             throw new PatientNotFoundException("The patient " + id + " does not exist");
         }
-        logger.info("listPatients finish");
+        logger.info("getPatientById finish");
         return resulPatient;
+
+    }
+    /*---------------------------  GET by FamilyName -----------------------------*/
+    @GetMapping(value = "patientFamilyName/{familyName}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Patient> getPatientByFamilyName(@PathVariable String familyName) throws PatientNotFoundException {
+
+        logger.info("getPatientByFamilyName start-"+familyName);
+        List<Patient> patientListResult = patientService.findByFamilyName(familyName);
+        if ((patientListResult==null) || (patientListResult.size() ==0)){
+            logger.warn("The patient whith family Name" + familyName + " does not exist");
+            throw new PatientNotFoundException("The patient whith family Name" + familyName + " does not exist");
+        }
+        logger.info("getPatientByFamilyName finish");
+        return patientListResult;
 
     }
     /*---------------------------  POST Patient -----------------------------*/

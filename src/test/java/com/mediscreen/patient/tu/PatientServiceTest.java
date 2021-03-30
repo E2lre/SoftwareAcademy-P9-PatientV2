@@ -13,6 +13,8 @@ import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,6 +126,33 @@ public class PatientServiceTest {
         Patient patientResult =  patientService.findById(0);
         //THEN
         assertThat(patientResult).isNull();
+    }
+    /*------------------------ findByFamilyName ---------------------------------*/
+    @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    public void findByFamilyName_existingfamilyNamePatient_patientListIsReturn(){
+        //GIVEN
+        List<Patient> patientList = new ArrayList<>();
+        patientList.add(patient);
+        Mockito.when(patientDao.findByLastName (anyString())).thenReturn(patientList);
+
+        //WHEN
+        List<Patient> patientListResult =  patientService.findByFamilyName(lastNameConst);
+        //THEN
+        assertThat(patientListResult).isNotNull();
+        assertThat(patientListResult.size()).isEqualTo(patientList.size());
+    }
+    @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    public void findByFamilyName_inexistingfamilyNamePatient_nullIsReturn(){
+        //GIVEN
+
+        Mockito.when(patientDao.findByLastName (anyString())).thenReturn(null);
+
+        //WHEN
+        List<Patient> patientListResult =  patientService.findByFamilyName(lastNameConst);
+        //THEN
+        assertThat(patientListResult).isNull();
     }
     /*------------------------ addPatient ---------------------------------*/
     @Test
