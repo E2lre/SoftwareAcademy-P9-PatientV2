@@ -4,47 +4,34 @@ import com.mediscreen.patient.dao.PatientDao;
 import com.mediscreen.patient.model.Patient;
 import com.mediscreen.patient.service.PatientService;
 
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.boot.test.mock.mockito.MockBean;
-//import org.springframework.test.annotation.DirtiesContext;
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureTestDatabase
-//@Configuration
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 public class PatientServiceTest {
 
-    private static final Logger logger = LogManager.getLogger(PatientServiceTest.class);
     @Autowired
     private PatientService patientService;
 
@@ -64,8 +51,7 @@ public class PatientServiceTest {
     @BeforeEach
     public void setUpEach() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-       /* try {*/
-            //Date birthdate = simpleDateFormat.parse(birthdateConst);
+
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate birthdate = LocalDate.parse(birthdateConst,df);
             patient = new Patient();
@@ -80,16 +66,11 @@ public class PatientServiceTest {
             List<Patient> patientList = new ArrayList<>();
             patientList.add(patient);
 
-
-      /*  } catch (ParseException e){
-            logger.error(e.getMessage());
-        }*/
     }
 
     /*------------------------ findAll ---------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void findAll_WhenDBISNotEmpty_PatientLisIsReturn(){
         //GIVEN
         List<Patient> patientList = new ArrayList<>();
@@ -105,7 +86,6 @@ public class PatientServiceTest {
     /*------------------------ findByID ---------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void findById_existingPatientId_PatientIsReturn(){
         //GIVEN
                 Mockito.when(patientDao.findById(0)).thenReturn(patient);
@@ -117,7 +97,6 @@ public class PatientServiceTest {
     }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void findById_inexistingPatientId_nullIsReturn(){
         //GIVEN
         Mockito.when(patientDao.findById(0)).thenReturn(null);
@@ -157,7 +136,6 @@ public class PatientServiceTest {
     /*------------------------ addPatient ---------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void addPatient_inexistingPatientGiven_patientCreated(){
 
         //GIVEN
@@ -170,7 +148,6 @@ public class PatientServiceTest {
     }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void addPatient_existingPatientGiven_patientNotCreated(){
 
         //GIVEN
@@ -185,7 +162,6 @@ public class PatientServiceTest {
     /*------------------------ update Patient ---------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void updatePatient_existingIdPatientGiven_patientUpdated(){
 
         //GIVEN
@@ -200,7 +176,6 @@ public class PatientServiceTest {
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void updatePatient_inexistingIdPatientGiven_errorIsReturn(){
 
         //GIVEN
@@ -214,7 +189,6 @@ public class PatientServiceTest {
     /*------------------------ delete Patient ---------------------------------*/
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void deletePatient_existingIdAndCorrectPatientGiven_patientDeleted(){
 
         //GIVEN
@@ -228,7 +202,6 @@ public class PatientServiceTest {
     }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void deletePatient_existingIdAndIncorrectPatientGiven_errorIsReturn(){
 
         //GIVEN
@@ -251,7 +224,6 @@ public class PatientServiceTest {
     }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void deletePatient_inexistingIdAndCorrectPatientGiven_errorIsReturn(){
 
         //GIVEN

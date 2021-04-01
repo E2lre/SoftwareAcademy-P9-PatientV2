@@ -37,8 +37,7 @@ public class PatientControllerIT {
     private static final Logger logger = LogManager.getLogger(PatientControllerIT.class);
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private PatientDao patientDao;
+
     //constantes de test
     String inexistingFirstnameConst = "James";
     String inexistingLastnameConst = "Bond";
@@ -50,16 +49,12 @@ public class PatientControllerIT {
 
     String existingFirstnameConst = "Hubert";
     String existingLastnameConst = "Bonisseur de la Bath";
+
     @BeforeEach
     public void setUpEach() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-      //  try {
-            //birthdateConst = LocalDate.parse()simpleDateFormat.parse(birthdate);
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         birthdateLocal = LocalDate.parse(birthdateConst,df);
-        //} catch (ParseException e){
-        //    logger.error(e.getMessage());
-        //}
     }
 
     /*---------------------------------------- GET Find All -------------------------------*/
@@ -102,17 +97,17 @@ public class PatientControllerIT {
         //Given
 
         //WHEN THEN
-        mockMvc.perform(get("/patientFamilyName/"+existingFirstnameConst))
+        mockMvc.perform(get("/patientFamilyName/"+existingLastnameConst))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
     @Test
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     public void getPatientByFamilyName_inexistingFamilyNamePatient_errorIsReturn() throws Exception {
         //Given
 
         //WHEN THEN
-        mockMvc.perform(get("/patientFamilyName/"+"AgentK"))
+         mockMvc.perform(get("/patientFamilyName/"+inexistingLastnameConst))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
@@ -123,8 +118,6 @@ public class PatientControllerIT {
     public void addPatient_inExistingPatient_patientIsCreate() throws Exception {
         //Given
 
-        /*DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate birthdateLocal2 = LocalDate.parse(birthdateConst,df);*/
         Patient patient = new Patient();
         patient.setFirstName(inexistingFirstnameConst);
         patient.setLastName(inexistingLastnameConst);
@@ -147,7 +140,7 @@ public class PatientControllerIT {
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void addPatient_ExistingPatient_errorIsReturn() throws Exception {
         //Given
-        Patient patient = new Patient(); //10,inexistingFirstnameConst,inexistingLastnameConst,birthdateConst,sexConst,addressConst,phoneConst);
+        Patient patient = new Patient();
         patient.setFirstName(existingFirstnameConst);
         patient.setLastName(existingLastnameConst);
         patient.setBirthdate(birthdateLocal);

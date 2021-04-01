@@ -55,17 +55,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--Ajout de la securité-->
-		<!--	<dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -173,11 +162,6 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-		<!--		<dependency>
-                    <groupId>javax.el</groupId>
-                    <artifactId>javax.el-api</artifactId>
-                    <version>3.0.0</version>
-                </dependency>-->
 		<!--Ajout de sleuth-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -188,12 +172,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
-		<!--Ajout de securité dans les tests-->
-	<!--<dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-test</artifactId>
-        <scope>test</scope>
-    </dependency>-->
 	</dependencies>
 
 <dependencyManagement>

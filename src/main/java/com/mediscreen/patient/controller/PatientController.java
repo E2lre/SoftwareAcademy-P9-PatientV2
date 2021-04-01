@@ -5,16 +5,13 @@ import com.mediscreen.patient.controller.exception.PatientCanNotBeSavedException
 import com.mediscreen.patient.controller.exception.PatientCanNotbeAddedException;
 import com.mediscreen.patient.controller.exception.PatientNotFoundException;
 import com.mediscreen.patient.model.Patient;
-//import com.mediscreen.patient.model.dto.PatientDto;
 import com.mediscreen.patient.service.PatientService;
-//import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
