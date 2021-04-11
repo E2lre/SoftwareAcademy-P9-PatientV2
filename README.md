@@ -61,7 +61,7 @@ Install zipkin image :
 Install Mongodb image : 
 * docker pull mongo
 
-rename mongo :
+Rename mongo :
 * docker image tag mongo:latest mongodb:latest
 
 #### MySQL
@@ -105,7 +105,7 @@ Install IHM image from pject directory
 * docker build -t exteam .
 
 #### Start application in Docker 
-from user directory, execute: 
+From user directory, execute: 
 * docker-compose up -d
 
 ### Database installation
@@ -120,7 +120,7 @@ from user directory, execute:
 * create the collection "note"
 
 ## URI
-### list all patient in data base
+### List all patient in data base
 * directly : GET http://localhost:8084/patients
 * With zuul : GET http://zuul:9004//microservice-patientsv2/patients
 ### Get patient by id patient
