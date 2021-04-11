@@ -46,7 +46,7 @@ For Global application
 * 127.0.0.1 mongodb
 
 
-###Docker image construction in project directory :
+### Docker image construction in project directory :
 docker build --build-arg JAR_FILE=target/*.jar -t p9-patient .
 
 ### Docker execution if docker-compose is not use
